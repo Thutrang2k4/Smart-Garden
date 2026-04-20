@@ -20,6 +20,7 @@ SemaphoreHandle_t xBinarySemaphoreInternet = xSemaphoreCreateBinary();
 // volatile int neo_state = 0; // Biến toàn cục để lưu trạng thái của NeoPixel
 // SemaphoreHandle_t xMutexNeoState = xSemaphoreCreateMutex(); // Mutex để bảo vệ truy cập vào neo_state
 
+<<<<<<< HEAD
 // volatile uint16_t blinkingInterval = 1000U; // Biến toàn cục để lưu khoảng thời gian nháy của LED, mặc định là 1000ms
 // SemaphoreHandle_t xMutexBlinkingInterval = xSemaphoreCreateMutex(); // Mutex để bảo vệ truy cập vào blinkingInterval
 
@@ -58,3 +59,7 @@ uint32_t glob_telemetry_interval = 10000;
 uint32_t glob_tinyml_interval = 5000;
 uint32_t glob_sensor_interval = 1000;
 SemaphoreHandle_t xMutexIntervals = xSemaphoreCreateMutex();
+=======
+volatile uint16_t blinkingInterval = 1000U; // Biến toàn cục để lưu khoảng thời gian nháy của LED, mặc định là 1000ms
+SemaphoreHandle_t xMutexBlinkingInterval = xSemaphoreCreateMutex(); // Mutex để bảo vệ truy cập vào blinkingInterval
+>>>>>>> parent of 83301ad (Update SemaphoreMutex for reading sensor tasks)

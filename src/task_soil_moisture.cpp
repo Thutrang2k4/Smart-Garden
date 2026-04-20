@@ -13,15 +13,7 @@ void Task_SoilMoisture(void *pvParameters) {
     int sensorValue = 0;
     while(1) {
         // Read the analog value (0-4095 on ESP32 by default)
-        if(xSemaphoreTake(xMutexSoilMoisture, (TickType_t)10) == pdTRUE) {
-            sensorValue = analogRead(soilSensorPin);
-            xSemaphoreGive(xMutexSoilMoisture);
-        } else {
-            // If we can't get the mutex, we can choose to skip this reading or handle it as needed
-            // For now, we'll just skip updating the soil moisture value
-            Serial.println("⚠️ ERROR: cannot get Mutex, skip reading soil moisture!");
-        }
-
+        sensorValue = analogRead(soilSensorPin);
         glob_soil_moisture = sensorValue; // Update global variable for soil moisture
 
         // Print to Serial for debugging

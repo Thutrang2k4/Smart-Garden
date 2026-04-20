@@ -31,6 +31,7 @@ extern SemaphoreHandle_t xBinarySemaphoreInternet;
 // extern volatile int neo_state;
 // extern SemaphoreHandle_t xMutexNeoState;
 
+<<<<<<< HEAD
 // extern volatile uint16_t blinkingInterval;
 // extern SemaphoreHandle_t xMutexBlinkingInterval;
 
@@ -63,4 +64,8 @@ extern uint32_t glob_tinyml_interval;
 extern uint32_t glob_sensor_interval;
 extern SemaphoreHandle_t xMutexIntervals;
 
+=======
+extern volatile uint16_t blinkingInterval;
+extern SemaphoreHandle_t xMutexBlinkingInterval;
+>>>>>>> parent of 83301ad (Update SemaphoreMutex for reading sensor tasks)
 #endif
