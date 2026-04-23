@@ -56,7 +56,6 @@ void tiny_ml_task(void *pvParameters)
         // For a simple example, let's assume a single float input
         input->data.f[0] = glob_temperature;
         input->data.f[1] = glob_humidity;
-        input->data.f[2] = glob_soil_moisture;
 
         // Run inference
         TfLiteStatus invoke_status = interpreter->Invoke();
@@ -71,6 +70,7 @@ void tiny_ml_task(void *pvParameters)
         Serial.print("Inference result: ");
         Serial.println(result);
 
+<<<<<<< HEAD
         if(result > 0.8) { // Assuming binary classification with threshold at 0.8
             // Serial.println("Anomaly detected!");
             sendToOLED(0, 50, "AI Inference:Abnormal");
@@ -97,6 +97,8 @@ void tiny_ml_task(void *pvParameters)
         // Thay số 5000 bằng biến current_tinyml_interval
         vTaskDelay(pdMS_TO_TICKS(current_tinyml_interval));
 =======
+=======
+>>>>>>> parent of 0b8664e (Updated tinyML model and source codes for supporting reading soil moisture and display all of the necessary information onto the oled)
         vTaskDelay(5000);
 >>>>>>> parent of 2d221ec (Add task for controlling user added relay and update web server for premitting user to add their wanted GPIO which will be controlled as a relay by user or the tinyML task)
     }

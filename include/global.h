@@ -1,21 +1,20 @@
 #ifndef __GLOBAL_H__
 #define __GLOBAL_H__
 
-#define SDA_PIN 11
-#define SCL_PIN 12
-
 #include <Arduino.h>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "freertos/semphr.h"
+<<<<<<< HEAD
 #include "task_oled.h"
 #include "led_blinky.h"
 #include "neo_control.h"
 #include "task_monitor.h"
+=======
+>>>>>>> parent of 0b8664e (Updated tinyML model and source codes for supporting reading soil moisture and display all of the necessary information onto the oled)
 
 extern float glob_temperature;
 extern float glob_humidity;
-extern int glob_soil_moisture;
 
 extern String WIFI_SSID;
 extern String WIFI_PASS;

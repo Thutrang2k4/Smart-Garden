@@ -1,10 +1,12 @@
-#include "task_temp_humi_monitor.h"
+#include "temp_humi_monitor.h"
 DHT20 dht20;
-// LiquidCrystal_I2C lcd(33,16,2);
+LiquidCrystal_I2C lcd(33,16,2);
 
 
-void task_temp_humi_monitor(void *pvParameters){
+void temp_humi_monitor(void *pvParameters){
 
+    Wire.begin(11, 12);
+    Serial.begin(115200);
     dht20.begin();
 
     while (1){
@@ -15,6 +17,8 @@ void task_temp_humi_monitor(void *pvParameters){
         float temperature = dht20.getTemperature();
         // Reading humidity
         float humidity = dht20.getHumidity();
+
+        
 
         // Check if any reads failed and exit early
         if (isnan(temperature) || isnan(humidity)) {
@@ -29,6 +33,7 @@ void task_temp_humi_monitor(void *pvParameters){
 
         // Print the results
         
+<<<<<<< HEAD:src/task_temp_humi_monitor.cpp
         // Serial.print("Humidity: ");
         // Serial.print(humidity);
         // Serial.print("%  Temperature: ");
@@ -47,6 +52,13 @@ void task_temp_humi_monitor(void *pvParameters){
         sprintf(tempBuf, "Humidity: %.1f %%  ", humidity);
         sendToOLED(0, 30, tempBuf);
 >>>>>>> parent of 58c4e31 (Update threshold as well as states of the blinky led task)
+=======
+        Serial.print("Humidity: ");
+        Serial.print(humidity);
+        Serial.print("%  Temperature: ");
+        Serial.print(temperature);
+        Serial.println("°C");
+>>>>>>> parent of 0b8664e (Updated tinyML model and source codes for supporting reading soil moisture and display all of the necessary information onto the oled):src/temp_humi_monitor.cpp
         
 <<<<<<< HEAD
         uint32_t current_sensor_interval = 1000;
