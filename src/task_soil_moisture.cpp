@@ -25,8 +25,13 @@ void Task_SoilMoisture(void *pvParameters) {
         // drops from 1000 to 99, the trailing zeros are visually overwritten.
         snprintf(oledBuffer, sizeof(oledBuffer), "Soil Moisture: %d    ", sensorValue);
 
+<<<<<<< HEAD
         // Send to OLED at the requested coordinates: x = 0, y = 30 (which is the 4th line, since y starts at 0)
         sendToOLED(0, 30, oledBuffer);
+=======
+        // Send to OLED at the requested coordinates: x = 0, y = 40
+        sendToOLED(0, 40, oledBuffer);
+>>>>>>> parent of 58c4e31 (Update threshold as well as states of the blinky led task)
 
         uint32_t current_sensor_interval = 1000;
         if (xSemaphoreTake(xMutexIntervals, (TickType_t)10) == pdTRUE) {

@@ -36,12 +36,17 @@ void task_temp_humi_monitor(void *pvParameters){
         // Serial.println("°C");
 
         char tempBuf[32];
-        sprintf(tempBuf, "Temp:%.1f\xF7" "C", temperature);
+        sprintf(tempBuf, "Temperature: %.1f \xF7" "C", temperature);
         // Hiển thị nhiệt độ ở dòng thứ 3 (y=20), không làm mất dòng Wifi ở trên
         sendToOLED(0, 20, tempBuf);
         
+<<<<<<< HEAD
         sprintf(tempBuf, "Humi:%.1f%%", humidity);
         sendToOLED(68, 20, tempBuf);
+=======
+        sprintf(tempBuf, "Humidity: %.1f %%  ", humidity);
+        sendToOLED(0, 30, tempBuf);
+>>>>>>> parent of 58c4e31 (Update threshold as well as states of the blinky led task)
         
         uint32_t current_sensor_interval = 1000;
         if (xSemaphoreTake(xMutexIntervals, (TickType_t)10) == pdTRUE) {

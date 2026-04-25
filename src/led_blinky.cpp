@@ -4,26 +4,21 @@ void led_blinky(void *pvParameters){
   pinMode(LED_GPIO, OUTPUT);
   
   int current_blinking_interval = 1000U;
-  float local_temp = 25.0;               // Biến lưu nhiệt độ cục bộ trong task
-
   while(1) {
-    // ------------------------------------------------
-    // 1. DÙNG SEMAPHORE (MUTEX) ĐỂ ĐỒNG BỘ TASK
-    // ------------------------------------------------
-    // Đợi tối đa 10 ticks để lấy quyền truy cập biến nhiệt độ toàn cục
-    if(xSemaphoreTake(xMutexTempHumi, (TickType_t)10) == pdTRUE) 
+    if(xSemaphoreTake(xMutexBlinkingInterval, (TickType_t)10) == pdTRUE) 
     {
-        // (CRITICAL SECTION) - An toàn sao chép dữ liệu
-        local_temp = glob_temperature; 
-        
-        // Trả lại Mutex ngay lập tức để Task Temp có thể ghi dữ liệu mới vào
-        xSemaphoreGive(xMutexTempHumi); 
+        // ----- (CRITICAL SECTION) -----
+        current_blinking_interval = blinkingInterval;
+        // return the mutex after updating the state
+        xSemaphoreGive(xMutexBlinkingInterval); 
+        // ------------------------------------------------
     } 
     else 
     {
-        Serial.println("⚠️ [LED TASK] Không lấy được Mutex, sử dụng nhiệt độ cũ!");
+        Serial.println("⚠️ ERROR: cannot get Mutex, skip reading blinking interval!");
     }
 
+<<<<<<< HEAD
     // ------------------------------------------------
     // 2. Tìm kiếm Interval tương ứng với mảng cấu hình do User thiết lập
     // ------------------------------------------------
@@ -53,5 +48,11 @@ void led_blinky(void *pvParameters){
     vTaskDelay(pdMS_TO_TICKS(current_blinking_interval));
     digitalWrite(LED_GPIO, LOW);  
     vTaskDelay(pdMS_TO_TICKS(current_blinking_interval));
+=======
+    digitalWrite(LED_GPIO, HIGH);  // turn the LED ON
+    vTaskDelay(current_blinking_interval);
+    digitalWrite(LED_GPIO, LOW);  // turn the LED OFF
+    vTaskDelay(current_blinking_interval);
+>>>>>>> parent of 58c4e31 (Update threshold as well as states of the blinky led task)
   }
 }

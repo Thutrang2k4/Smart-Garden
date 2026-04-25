@@ -9,23 +9,18 @@ void neo_control_RPC(void *pvParameters){
     strip.clear();
     strip.show();
 
-    float local_humidity = 60.0; // Default safe value
+    int current_state = 0;
 
     while(1) {        
-        // ------------------------------------------------
-        // 1. SEMAPHORE SYNCHRONIZATION
-        // ------------------------------------------------
-        // Safely read the global humidity updated by the DHT task
-        if (xSemaphoreTake(xMutexTempHumi, (TickType_t)10) == pdTRUE) 
+        if (xSemaphoreTake(xMutexNeoState, (TickType_t)10) == pdTRUE) 
         {
-            local_humidity = glob_humidity;
-            xSemaphoreGive(xMutexTempHumi); 
+            current_state = neo_state;
+            xSemaphoreGive(xMutexNeoState); 
         } 
-        else 
-        {
-            Serial.println("⚠️ [NEO TASK] Cannot get Mutex, using previous humidity!");
-        }
+        strip.setPixelColor(0, strip.Color(current_state * 255, 0, 0)); // Set pixel 0 to red
+        strip.show(); // Update the strip
 
+<<<<<<< HEAD
         // ------------------------------------------------
         // 2. HUMIDITY TO COLOR MAPPING LOGIC (3 Levels)
         // ------------------------------------------------
@@ -59,5 +54,9 @@ void neo_control_RPC(void *pvParameters){
 
         // Task runs every 500 milliseconds to check for updates
         vTaskDelay(pdMS_TO_TICKS(500));
+=======
+        // Wait for 100 milliseconds
+        vTaskDelay(pdMS_TO_TICKS(100));
+>>>>>>> parent of 58c4e31 (Update threshold as well as states of the blinky led task)
     }
 }
