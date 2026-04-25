@@ -94,10 +94,14 @@ void wifi_web_task(void *pvParameters)
         {
             last_local_send = millis();
             
+<<<<<<< HEAD
             String wsData = "{\"temperature\":" + String(glob_temperature) + 
                             ",\"humidity\":" + String(glob_humidity) + 
                             ",\"soil_moisture\":" + String(glob_soil_moisture) +
                             ",\"state\":" + String((int)my_ctx->currentState) + "}";
+=======
+            String wsData = "{\"temperature\":" + String(glob_temperature) + ",\"humidity\":" + String(glob_humidity) + "}";
+>>>>>>> parent of ba9960f (Update web server to display the soil moisture value)
             Webserver_sendata(wsData);
         }
 
