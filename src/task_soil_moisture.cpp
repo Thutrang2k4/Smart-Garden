@@ -26,8 +26,13 @@ void Task_SoilMoisture(void *pvParameters) {
         snprintf(oledBuffer, sizeof(oledBuffer), "Soil Moisture: %d    ", sensorValue);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         // Send to OLED at the requested coordinates: x = 0, y = 30 (which is the 4th line, since y starts at 0)
         sendToOLED(0, 30, oledBuffer);
+=======
+        // Send to OLED at the requested coordinates: x = 0, y = 40
+        sendToOLED(0, 40, oledBuffer);
+>>>>>>> parent of 58c4e31 (Update threshold as well as states of the blinky led task)
 =======
         // Send to OLED at the requested coordinates: x = 0, y = 40
         sendToOLED(0, 40, oledBuffer);
