@@ -7,11 +7,14 @@
 #include "freertos/semphr.h"
 <<<<<<< HEAD
 #include "task_oled.h"
+<<<<<<< HEAD
 #include "task_led_blinky.h"
 #include "task_neo_control.h"
 #include "task_monitor.h"
 =======
 >>>>>>> parent of 0b8664e (Updated tinyML model and source codes for supporting reading soil moisture and display all of the necessary information onto the oled)
+=======
+>>>>>>> parent of a50abb5 (Add a task monitor and update the web server for permitting users to update their wanted threshold to warn them when the temperature or humidity or soil moisture has problems.)
 
 extern float glob_temperature;
 extern float glob_humidity;
@@ -37,16 +40,31 @@ extern SemaphoreHandle_t xMutexTempHumi;
 extern SemaphoreHandle_t xMutexSoilMoisture;
 
 //----------------------------------------------led blinky config----------------------------------------------
+#define MAX_LED_STATES 10
+// Cấu trúc định nghĩa 1 trạng thái
+struct LedState {
+    float tempThreshold;
+    int interval;
+};
 
 extern LedState ledStates[MAX_LED_STATES];
 extern int numLedStates;
 extern SemaphoreHandle_t xMutexLedStates;
 
 // ---------------------------------------------NeoPixel control config---------------------------------------------
+#define MAX_NEO_STATES 10
+// Cấu trúc trạng thái NeoPixel
+struct NeoState {
+    float humiThreshold;
+    uint8_t r;
+    uint8_t g;
+    uint8_t b;
+};
 
 extern NeoState neoStates[MAX_NEO_STATES];
 extern int numNeoStates;
 extern SemaphoreHandle_t xMutexNeoStates; // Mutex để bảo vệ
+<<<<<<< HEAD
 
 // -----------------------------------------------CRITICAL WARNING----------------------------------------------
 extern SystemContext *my_ctx; // Context chung cho việc monitor và cảnh báo trạng thái hệ thống
@@ -69,4 +87,6 @@ extern SemaphoreHandle_t xMutexBlinkingInterval;
 >>>>>>> parent of 83301ad (Update SemaphoreMutex for reading sensor tasks)
 =======
 >>>>>>> parent of 2d221ec (Add task for controlling user added relay and update web server for premitting user to add their wanted GPIO which will be controlled as a relay by user or the tinyML task)
+=======
+>>>>>>> parent of a50abb5 (Add a task monitor and update the web server for permitting users to update their wanted threshold to warn them when the temperature or humidity or soil moisture has problems.)
 #endif

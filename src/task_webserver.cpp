@@ -97,11 +97,15 @@ void wifi_web_task(void *pvParameters)
 <<<<<<< HEAD
             String wsData = "{\"temperature\":" + String(glob_temperature) + 
                             ",\"humidity\":" + String(glob_humidity) + 
+<<<<<<< HEAD
                             ",\"soil_moisture\":" + String(glob_soil_moisture) +
                             ",\"state\":" + String((int)my_ctx->currentState) + "}";
 =======
             String wsData = "{\"temperature\":" + String(glob_temperature) + ",\"humidity\":" + String(glob_humidity) + "}";
 >>>>>>> parent of ba9960f (Update web server to display the soil moisture value)
+=======
+                            ",\"soil_moisture\":" + String(glob_soil_moisture) + "}";
+>>>>>>> parent of a50abb5 (Add a task monitor and update the web server for permitting users to update their wanted threshold to warn them when the temperature or humidity or soil moisture has problems.)
             Webserver_sendata(wsData);
         }
 

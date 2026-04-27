@@ -12,8 +12,11 @@
 #include "task_wifi.h"
 #include "task_webserver.h"
 #include "task_core_iot.h"
+<<<<<<< HEAD
 #include "task_monitor.h"
 #include "task_relay_controller.h"
+=======
+>>>>>>> parent of a50abb5 (Add a task monitor and update the web server for permitting users to update their wanted threshold to warn them when the temperature or humidity or soil moisture has problems.)
 
 void setup()
 {
@@ -27,8 +30,13 @@ void setup()
   xTaskCreate(Task_RelayController, "Task Relay Controller", 2048, NULL, 2, NULL);
   xTaskCreate(Task_Monitor, "Monitor Status", 2048, NULL, 2, NULL);
 
+<<<<<<< HEAD
   xTaskCreate(task_neo_control, "Task NEO Control", 2048, NULL, 2, NULL);
   xTaskCreate(task_tiny_ml, "Tiny ML Task", 2048, NULL, 2, NULL);
+=======
+  xTaskCreate(neo_control_RPC, "Task NEO Control", 2048, NULL, 2, NULL);
+  xTaskCreate(tiny_ml_task, "Tiny ML Task", 2048, NULL, 2, NULL);
+>>>>>>> parent of a50abb5 (Add a task monitor and update the web server for permitting users to update their wanted threshold to warn them when the temperature or humidity or soil moisture has problems.)
   xTaskCreate(Task_Toggle_BOOT, "Task_Toggle_BOOT", 4096, NULL, 2, NULL);
 
   check_info_File(0);

@@ -13,7 +13,6 @@ function onOpen(event) {
     console.log('Connection opened');
     Send_Data(JSON.stringify({ page: "request_led_config" }));
     Send_Data(JSON.stringify({ page: "request_neo_config" }));
-    Send_Data(JSON.stringify({ page: "request_threshold_config" }));
 }
 
 function onClose(event) {
@@ -64,6 +63,7 @@ function onMessage(event) {
             currentNeoStates = data.value;
             renderNeoTable();
         }
+<<<<<<< HEAD
 
         if (data.state !== undefined && data.state != lastWebState) {
             lastWebState = data.state;
@@ -108,6 +108,8 @@ function onMessage(event) {
 >>>>>>> parent of ba9960f (Update web server to display the soil moisture value)
 =======
 >>>>>>> parent of 2d221ec (Add task for controlling user added relay and update web server for premitting user to add their wanted GPIO which will be controlled as a relay by user or the tinyML task)
+=======
+>>>>>>> parent of a50abb5 (Add a task monitor and update the web server for permitting users to update their wanted threshold to warn them when the temperature or humidity or soil moisture has problems.)
     } catch (e) {
         console.warn("Không phải JSON hợp lệ:", event.data);
     }
@@ -269,7 +271,6 @@ document.getElementById("settingsForm").addEventListener("submit", function (e) 
     alert("✅ Cấu hình đã được gửi đến thiết bị!");
 });
 
-// ==================== LED CONFIG ====================
 // Mảng lưu trữ trạng thái tạm thời trên giao diện
 let currentLedStates = [];
 
@@ -324,7 +325,6 @@ function saveLedConfig() {
     renderLedTable(); // Render lại để hiển thị mảng đã được sắp xếp
 }
 
-// ==================== NEO PIXEL CONFIG ====================
 let currentNeoStates = [];
 // Hàm hỗ trợ chuyển đổi từ RGB sang dạng Hex (#RRGGBB) cho input color
 function rgbToHex(r, g, b) {
@@ -390,90 +390,4 @@ function saveNeoConfig() {
     }));
     alert("Đã gửi cấu hình NeoPixel!");
     renderNeoTable();
-}
-
-let lastWebState = 0;
-
-// function showAlert(state) {
-//     const toastContainer = document.getElementById('toast-container');
-//     if (!toastContainer) return;
-
-//     // Nếu trạng thái là NORMAL (0) thì không hiện cảnh báo
-//     if (state === 0) return;
-
-//     // Tạo thẻ div cho thông báo
-//     const toast = document.createElement('div');
-    
-//     // Set màu sắc (2: Đỏ - Critical, 1: Vàng - Warning)
-//     toast.className = 'toast ' + (state === 2 ? 'critical' : 'warning');
-
-//     // Nội dung thông báo
-//     const message = (state === 2) ? 
-//                     "🚨 CRITICAL: Hệ thống vượt ngưỡng nguy hiểm!" : 
-//                     "⚠️ WARNING: Hệ thống vượt ngưỡng cảnh báo!";
-
-//     // Đưa HTML vào thông báo (Gồm text và dấu X để tắt)
-//     toast.innerHTML = `
-//         <span>${message}</span>
-//         <button class="toast-close" onclick="closeToast(this)">&times;</button>
-//     `;
-
-//     // Thêm vào góc dưới bên phải
-//     toastContainer.appendChild(toast);
-
-//     // Tự động tắt sau 5 giây (5000ms)
-//     setTimeout(() => {
-//         closeToast(toast.querySelector('.toast-close'));
-//     }, 5000);
-// }
-
-// // Hàm hỗ trợ tắt thông báo với hiệu ứng mờ dần
-// function closeToast(buttonElement) {
-//     const toast = buttonElement.parentElement;
-//     if (toast) {
-//         toast.style.animation = 'fadeOutToast 0.4s ease forwards';
-//         // Đợi animation chạy xong rồi xóa element khỏi DOM
-//         setTimeout(() => {
-//             if (toast.parentElement) {
-//                 toast.parentElement.removeChild(toast);
-//             }
-//         }, 400);
-//     }
-// }
-
-function saveThresholds() {
-    const data = {
-        page: "threshold_config",
-        value: {
-            tw: parseFloat(document.getElementById('tw').value),
-            tc: parseFloat(document.getElementById('tc').value),
-            hw: parseFloat(document.getElementById('hw').value),
-            hc: parseFloat(document.getElementById('hc').value),
-            sw: parseInt(document.getElementById('sw').value),
-            sc: parseInt(document.getElementById('sc').value)
-        }
-    };
-    Send_Data(JSON.stringify(data));
-    alert("Đã cập nhật ngưỡng cảnh báo!");
-}
-
-function updateSystemStatus(state) {
-    const box = document.getElementById('system-status-box');
-    const text = document.getElementById('system-status-text');
-    const icon = document.getElementById('system-status-icon');
-    if (!box) return;
-
-    if (state === 0) {
-        box.style.display = 'none'; // Normal -> Ẩn cảnh báo
-    } else if (state === 1) {
-        box.className = 'status-box warning';
-        icon.innerHTML = '⚠️';
-        text.innerText = 'WARNING: Hệ thống vượt ngưỡng cảnh báo!';
-        box.style.display = 'flex'; // Hiện liên tục
-    } else if (state === 2) {
-        box.className = 'status-box critical';
-        icon.innerHTML = '🚨';
-        text.innerText = 'CRITICAL: Hệ thống vượt ngưỡng nguy hiểm!';
-        box.style.display = 'flex'; // Hiện liên tục
-    }
 }

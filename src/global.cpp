@@ -43,11 +43,8 @@ NeoState neoStates[MAX_NEO_STATES] = {
     {999.0, 0, 0, 255}    // Khác: Xanh dương
 };
 int numNeoStates = 3;
-SemaphoreHandle_t xMutexNeoStates = xSemaphoreCreateMutex();
 
-//-----------------------------------------------CRITICAL WARNING----------------------------------------------
-SystemContext *my_ctx = new SystemContext();
-
+<<<<<<< HEAD
 <<<<<<< HEAD
 //-----------------------------------------------RELAY CONTROLLER config----------------------------------------------
 RelayInfo glob_relays[MAX_RELAYS];
@@ -65,3 +62,6 @@ SemaphoreHandle_t xMutexBlinkingInterval = xSemaphoreCreateMutex(); // Mutex đ�
 >>>>>>> parent of 83301ad (Update SemaphoreMutex for reading sensor tasks)
 =======
 >>>>>>> parent of 2d221ec (Add task for controlling user added relay and update web server for premitting user to add their wanted GPIO which will be controlled as a relay by user or the tinyML task)
+=======
+SemaphoreHandle_t xMutexNeoStates = xSemaphoreCreateMutex();
+>>>>>>> parent of a50abb5 (Add a task monitor and update the web server for permitting users to update their wanted threshold to warn them when the temperature or humidity or soil moisture has problems.)
