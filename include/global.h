@@ -12,7 +12,6 @@
 #include "led_blinky.h"
 #include "neo_control.h"
 #include "task_monitor.h"
-#include "task_relay_controller.h"
 
 extern float glob_temperature;
 extern float glob_humidity;
@@ -52,6 +51,7 @@ extern SemaphoreHandle_t xMutexNeoStates; // Mutex để bảo vệ
 
 // -----------------------------------------------CRITICAL WARNING----------------------------------------------
 extern SystemContext *my_ctx; // Context chung cho việc monitor và cảnh báo trạng thái hệ thống
+<<<<<<< HEAD
 
 //-----------------------------------------------RELAY CONTROLLER config----------------------------------------------
 extern RelayInfo glob_relays[MAX_RELAYS];
@@ -68,4 +68,6 @@ extern SemaphoreHandle_t xMutexIntervals;
 extern volatile uint16_t blinkingInterval;
 extern SemaphoreHandle_t xMutexBlinkingInterval;
 >>>>>>> parent of 83301ad (Update SemaphoreMutex for reading sensor tasks)
+=======
+>>>>>>> parent of 2d221ec (Add task for controlling user added relay and update web server for premitting user to add their wanted GPIO which will be controlled as a relay by user or the tinyML task)
 #endif

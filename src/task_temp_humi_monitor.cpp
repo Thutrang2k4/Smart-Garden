@@ -48,6 +48,7 @@ void task_temp_humi_monitor(void *pvParameters){
         sendToOLED(0, 30, tempBuf);
 >>>>>>> parent of 58c4e31 (Update threshold as well as states of the blinky led task)
         
+<<<<<<< HEAD
         uint32_t current_sensor_interval = 1000;
         if (xSemaphoreTake(xMutexIntervals, (TickType_t)10) == pdTRUE) {
             current_sensor_interval = glob_sensor_interval;
@@ -57,6 +58,9 @@ void task_temp_humi_monitor(void *pvParameters){
         }
 
         vTaskDelay(pdMS_TO_TICKS(current_sensor_interval));
+=======
+        vTaskDelay(5000);
+>>>>>>> parent of 2d221ec (Add task for controlling user added relay and update web server for premitting user to add their wanted GPIO which will be controlled as a relay by user or the tinyML task)
     }
     
 }

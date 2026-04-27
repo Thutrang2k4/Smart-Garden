@@ -49,6 +49,7 @@ SemaphoreHandle_t xMutexNeoStates = xSemaphoreCreateMutex();
 //-----------------------------------------------CRITICAL WARNING----------------------------------------------
 SystemContext *my_ctx = new SystemContext();
 
+<<<<<<< HEAD
 //-----------------------------------------------RELAY CONTROLLER config----------------------------------------------
 RelayInfo glob_relays[MAX_RELAYS];
 QueueHandle_t glob_relayQueue = NULL;
@@ -63,3 +64,5 @@ SemaphoreHandle_t xMutexIntervals = xSemaphoreCreateMutex();
 volatile uint16_t blinkingInterval = 1000U; // Biến toàn cục để lưu khoảng thời gian nháy của LED, mặc định là 1000ms
 SemaphoreHandle_t xMutexBlinkingInterval = xSemaphoreCreateMutex(); // Mutex để bảo vệ truy cập vào blinkingInterval
 >>>>>>> parent of 83301ad (Update SemaphoreMutex for reading sensor tasks)
+=======
+>>>>>>> parent of 2d221ec (Add task for controlling user added relay and update web server for premitting user to add their wanted GPIO which will be controlled as a relay by user or the tinyML task)
