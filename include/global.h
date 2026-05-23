@@ -7,8 +7,8 @@
 #include "freertos/semphr.h"
 <<<<<<< HEAD
 #include "task_oled.h"
-#include "led_blinky.h"
-#include "neo_control.h"
+#include "task_led_blinky.h"
+#include "task_neo_control.h"
 #include "task_monitor.h"
 =======
 >>>>>>> parent of 0b8664e (Updated tinyML model and source codes for supporting reading soil moisture and display all of the necessary information onto the oled)
